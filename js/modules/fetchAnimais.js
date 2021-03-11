@@ -14,11 +14,12 @@ export default function initFetchAnimais() {
       const animaisResponse = await fetch(url);
       const animaisJson = await animaisResponse.json();
       const numerosGrid = document.querySelector('.numeros-grid');
-
-      animaisJson.forEach((animal) => {
-        const divAnimal = createAnimal(animal);
-        numerosGrid.appendChild(divAnimal);
-      });
+      if (animaisJson) {
+        animaisJson.forEach((animal) => {
+          const divAnimal = createAnimal(animal);
+          numerosGrid.appendChild(divAnimal);
+        });
+      }
       initAnimaNumeros();
     } catch (erro) {
       console.log(erro);
